@@ -13,6 +13,8 @@ namespace WebApplication1.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            string a = "";
+
             return View();
         }
     }
