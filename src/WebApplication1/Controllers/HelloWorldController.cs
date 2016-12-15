@@ -15,6 +15,8 @@ namespace WebApplication1.Controllers
         {
             string a = "";
 
+            string b = "";
+
             return View();
         }
     }
