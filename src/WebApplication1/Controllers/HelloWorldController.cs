@@ -32,7 +32,64 @@ namespace WebApplication1.Controllers
 
             IEnumerable<ZJFI_TempVM> model = _connection.Query<ZJFI_TempVM>("SELECT * FROM ZJFI_Temp");
 
+            _connection.Close();
+
             return View(model);
+        }
+
+
+        public IActionResult Create()
+        {
+            return View(new ZJFI_TempVM());
+
+        }
+
+        [HttpPost]
+        public IActionResult Create(ZJFI_TempVM vm)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                string DBConnectString = Configuration.GetValue<string>("Data:DefaultConnection:ConnectionString");
+                IDbConnection _connection = new SqlConnection(DBConnectString);
+                _connection.Open();
+
+
+
+                //_connection.Execute(@"INSERT INTO ZJFI_Temp
+                //                        (
+                //                            site_ref,
+                //                            [Desc],
+                //                            WDate
+                //                        )
+                //                        VALUES
+                //                        (
+                //                            @site_ref,
+                //                            @Desc,
+                //                         @WDate
+                //                        )", new { site_ref = vm.site_ref, Desc = "1", WDate = "2016-12-19" });
+
+
+                vm.site_ref = "KENDEV";
+                vm.Desc = "테스트";
+
+                _connection.Execute(@"INSERT INTO ZJFI_Temp
+                                    (
+                                        site_ref,
+                                        [Desc]
+                                    )
+                                    VALUES
+                                    (
+                                        @site_ref,
+                                        @Desc
+                                    )", vm);
+
+                _connection.Close();
+            }
+
+            return RedirectToAction("index");
+
         }
     }
 }
