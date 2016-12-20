@@ -8,6 +8,8 @@ using System.Data;
 using System.Data.SqlClient;
 using WebApplication1.Models;
 using Dapper;
+using System.Data.Common;
+using WebApplication1.Service;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,6 +18,7 @@ namespace WebApplication1.Controllers
     public class HelloWorldController : Controller
     {
         private readonly IConfiguration Configuration;
+        private DbConnection _connection;
 
         public HelloWorldController(IConfiguration configuration)
         {
@@ -25,6 +28,7 @@ namespace WebApplication1.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+
             string DBConnectString = Configuration.GetValue<string>("Data:DefaultConnection:ConnectionString");
             IDbConnection _connection = new SqlConnection(DBConnectString);
             _connection.Open();
@@ -37,6 +41,18 @@ namespace WebApplication1.Controllers
             return View(model);
         }
 
+        public IActionResult Index2()
+        {
+            //DBService service = new DBService(Configuration);
+            DBService service = new DBService();
+
+            IEnumerable<ZJFI_TempVM> model= service.GetTemp();
+
+            
+
+
+            return View(model);
+        }
 
         public IActionResult Create()
         {

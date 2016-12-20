@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using WebApplication1.Service;
 
 namespace WebApplication1
 {
@@ -31,6 +32,8 @@ namespace WebApplication1
             services.AddMvc();
 
             services.AddSingleton<IConfiguration>(Configuration);
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

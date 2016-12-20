@@ -7,14 +7,12 @@
 <form asp-action="Create" method="post">
     <div class="form-group">
             <label asp-for="site_ref" class="control-label col-md-2"></label>
-            <input asp-for="site_ref" class="form-control col-md-10" />
-            <span asp-validation-for="site_ref" class="text-danger"></span>
+        <span asp-validation-for="site_ref" class="text-danger"></span>
+        <input asp-for="site_ref" class="form-control col-md-10" />
+            
     </div>
-
-    <br/>
     <br />
-    <br />
-    <div class="form-group">
+    <div>
         <div class="col-md-offset-2 col-md-10">
             <button type="submit">submit</button>
         </div>
