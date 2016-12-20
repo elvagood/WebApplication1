@@ -26,8 +26,6 @@ namespace WebApplication1.Service
 
         public IEnumerable<ZJFI_TempVM> GetTemp()
         {
-
-
             IEnumerable<ZJFI_TempVM> model;
 
             using (_connection = base.GetOpenConnection())
@@ -36,7 +34,6 @@ namespace WebApplication1.Service
             }
 
             return model;
-
         }
     }
 }

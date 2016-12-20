@@ -19,11 +19,17 @@ namespace WebApplication1.Controllers
     {
         private readonly IConfiguration Configuration;
         private DbConnection _connection;
+        private readonly DBService _dbService;
 
-        public HelloWorldController(IConfiguration configuration)
+        //public HelloWorldController(IConfiguration configuration)
+        //{
+        //    Configuration = configuration;
+        //}
+        public HelloWorldController(DBService dbService)
         {
-            Configuration = configuration;
+            _dbService = dbService;
         }
+
 
         // GET: /<controller>/
         public IActionResult Index()
@@ -44,9 +50,10 @@ namespace WebApplication1.Controllers
         public IActionResult Index2()
         {
             //DBService service = new DBService(Configuration);
-            DBService service = new DBService();
+            //DBService service = new DBService();
 
-            IEnumerable<ZJFI_TempVM> model= service.GetTemp();
+
+            IEnumerable<ZJFI_TempVM> model= _dbService.GetTemp();
 
             
 
