@@ -10,6 +10,7 @@ using WebApplication1.Models;
 using Dapper;
 using System.Data.Common;
 using WebApplication1.Service;
+using Serilog;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,6 +21,9 @@ namespace WebApplication1.Controllers
         private readonly IConfiguration Configuration;
         private DbConnection _connection;
         private readonly DBService _dbService;
+
+
+        readonly ILogger _log = Log.ForContext<HelloWorldController>();
 
         //public HelloWorldController(IConfiguration configuration)
         //{
@@ -34,7 +38,6 @@ namespace WebApplication1.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-
             string DBConnectString = Configuration.GetValue<string>("Data:DefaultConnection:ConnectionString");
             IDbConnection _connection = new SqlConnection(DBConnectString);
             _connection.Open();
