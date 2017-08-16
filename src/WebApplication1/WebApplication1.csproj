@@ -12,8 +12,6 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="dapper" Version="1.50.2" />
-    <PackageReference Include="dapper.simplecrud" Version="1.13.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Routing" Version="1.0.1" />
